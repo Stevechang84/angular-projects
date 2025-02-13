@@ -1,0 +1,57 @@
+<style>
+
+.textarea-container {
+  position: relative;
+ }
+.textarea-container textarea {
+ width: 100%;
+ height: 100%;
+ box-sizing: border-box;
+}
+.textarea-container button {
+ position: absolute;
+ top: 15px;
+ right: 0;
+}
+</style>
+
+<div style="display:flex">
+
+    <mat-card style="width:50%">
+        <mat-card-content>
+
+            <mat-form-field style="width:100%">
+                <mat-label>Json Object</mat-label>
+                <textarea matInput [(ngModel)]="jsonInput" rows="19" cols="825"></textarea>
+            </mat-form-field>
+            <div style="
+                    display: flex;
+                    justify-content: space-between;
+                    align-items:center;
+                    ">
+
+                <mat-form-field>
+                    <mat-label>Root Class Name</mat-label>
+                    <input matInput [(ngModel)]="rootClassName" (keydown.space)="preventWhiteSpace($event)">
+                </mat-form-field>
+                <button mat-raised-button color="primary" (click)="handleConvertClick()">Convert</button>
+                <mat-form-field>
+                    <mat-label>Test Num</mat-label>
+                    <input matInput [(ngModel)]="testNum" >
+                </mat-form-field>
+            </div>
+        </mat-card-content>
+
+    </mat-card>
+    <mat-card style="width:50%">
+        <mat-card-content  @convertingTrigger *ngIf="showOutput" class="textarea-container">
+            <mat-form-field style="width:100%" >
+                <button mat-mini-fab color="basic" (click)="copyToClipboardClick()">
+                    <mat-icon>content_copy</mat-icon>
+                  </button>
+                <textarea readonly matInput [value]="codeOutput" rows="20" cols="825" ></textarea>
+            </mat-form-field>
+            <div>testNum + 1 = {{testNumPlusOne}}</div>
+        </mat-card-content>
+    </mat-card>
+</div>
