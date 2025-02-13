@@ -48,8 +48,7 @@ import { TextPreviewerComponent } from './text-previewer/text-previewer.componen
     MatCardModule,
     RouterModule.forRoot([
       { path: '', component: TextPreviewerComponent },
-      { path: 'json-converter', component: JsonToCsharpClassComponent },
-      { path: 'test', component: TestComponentComponent }
+      { path: 'json-converter', component: JsonToCsharpClassComponent }
     ])
   ],
   providers: [],
